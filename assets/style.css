@@ -1,0 +1,40 @@
+:root {
+    --purple: rebeccapurple;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif
+}
+
+h1 {
+    font-size: 40px;
+    margin-top: 40px;
+}
+
+p {
+    font-size: 20px;
+}
+
+
+#hiscore-link {
+    color: var(--purple);
+    display: inline-block;
+}
+
+#timer {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+button  {
+    font-size: 17px;
+    background-color: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 7px;
+
+}
