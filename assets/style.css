@@ -38,3 +38,7 @@ button  {
     padding: 3px 7px;
 
 }
+
+button:hover {
+    background-color: mediumpurple;
+}
