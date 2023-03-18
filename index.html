@@ -11,11 +11,27 @@
     <h3 id="hiscore-link">View Highscores</h3>
     <h3 id="timer">Time: <span id="time-counter">0</span></h3>
     <h1 class="startpg" id="title">Coding Quiz Challenge</h1>
-    <p class="startpg">Try to answer the following code-related questions within the time <br> limit. Keep in mind that incorrect answers wil penalize your 
-    score/time <br> by ten seconds!</p>
     <div class="startpg">
-    <button>Start Quiz</button>
+      <p>Try to answer the following code-related questions within the time <br> limit. Keep in mind that incorrect answers wil penalize your 
+          score/time <br> by ten seconds!</p>
+    </div>
+    
+    <div class="startpg">
+    <button id="start-button">Start Quiz</button>
     </div>
 
     <script type="text/javascript" src="./assets/script.js"></script>
 </body>
+
+<!-- 
+To do list:
+1. make the content of the start screen hide when the start quiz button is clicked.
+2. make a timer that counts down when the start quiz button is clicked.
+3. add the first question and four answer buttons.
+4. add an events for each button displaying correct or incorrect and subtracting 10 seconds from the timer if wrong.
+5. hide the first question after 1 second and show the next question.
+6. repeat the process for each question added.
+7. hide the question and display the timer when it hits zero or all the questions are answered.
+8. ask for initials of the player to label their highscore with.
+9. after the submit initials button is clicked show the highscores list updated with the newest score. 
+-->
