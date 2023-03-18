@@ -15,10 +15,10 @@ function setTime() {
     var countDown =  setInterval(function() {
         timeLeft--;
         counterEl.textContent = timeLeft;
-        if (timeLeft == 0) {
-            return;
+        if (timeLeft === 0) {
+            clearInterval(countDown);
         }
-    }, 1000)
+    }, 100)
 }
 
 stButtonEl.addEventListener("click", function(event) {
