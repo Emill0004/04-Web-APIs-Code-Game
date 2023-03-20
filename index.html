@@ -9,13 +9,29 @@
 
 <body>
     <h3 id="hiscore-link">View Highscores</h3>
-    <h3 id="timer">Time: <span id="time-counter">0</span></h3>
-    <h1 class="startpg" id="title">Coding Quiz Challenge</h1>
-    <p class="startpg">Try to answer the following code-related questions within the time <br> limit. Keep in mind that incorrect answers wil penalize your 
-    score/time <br> by ten seconds!</p>
-    <div class="startpg">
-    <button>Start Quiz</button>
+    <h3 id="timer">Time: <span id="counter">0</span></h3>
+    <div id="startpg">
+      <h1 id="title">Coding Quiz Challenge</h1>
+    <p>Try to answer the following code-related questions within the time <br> limit. Keep in mind that incorrect answers wil penalize your 
+      score/time <br> by ten seconds!</p>
+    <button id="start-button">Start Quiz</button>
     </div>
+    <h2 class="contentpg" id="question"></h2>
+    <p class="contentpg" id="score"></p>
+    <div class="contentpg" id="ans-buttons">
+      <button id="ans-button-1"></button>
+      <button id="ans-button-2"></button>
+      <button id="ans-button-3"></button>
+      <button id="ans-button-4"></button>
+    </div>
+    <button id="test-button">test button</button>
 
     <script type="text/javascript" src="./assets/script.js"></script>
 </body>
+
+<!-- 
+To do list:
+  1. add an input box for initials.
+  2. add a highscore screen.
+  3. display ordered highscores from local storage.
+-->
