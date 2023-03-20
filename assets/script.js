@@ -1,8 +1,12 @@
 var stButtonEl = document.getElementById("start-button");
 var startPageEl = document.getElementById("startpg");
-var counterEl =  document.getElementById("counter");
-var contentPageEl =  document.getElementById("contentpg");
+var counterEl = document.getElementById("counter");
+var contentPageEl = document.getElementById("contentpg");
 var questionEl = document.getElementById("question");
+var button1El = document.getElementById("ans-button-1");
+var button2El = document.getElementById("ans-button-2");
+var button3El = document.getElementById("ans-button-3");
+var button4El = document.getElementById("ans-button-4");
 
 var questionText = ["Commonly used data types DO NOT include:", 
 "The condition in an if / else statement is enclosed within _____.", 
@@ -10,6 +14,14 @@ var questionText = ["Commonly used data types DO NOT include:",
 "String values must be enclosed within _____ when being assigned to variables.", 
 "A very useful tool used during development and debugging for printing content to the debugger is:", 
 "All done!"];
+var q1AnsText = ["1. strings", "2. booleans", "3. alerts", "4. numbers"];
+var q2AnsText = ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"];
+var q3AnsText = ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"];
+var q4AnsText = ["1. commas", "2. curly brackets", "3. quotes", "4. parentheses"];
+var q5AnsText = ["1. Javascript", "2. terminal / bash", "3. for loops", "4. console.log"];
+var buttonArray = [button1El, button2El, button3El, button4El];
+
+
 
 var centralCounter;
 
