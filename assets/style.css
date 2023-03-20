@@ -58,3 +58,7 @@ button:hover {
 .hide {
     display: none;
 }
+
+#ans-button-4 {
+    display: none;
+}

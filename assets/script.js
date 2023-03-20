@@ -24,48 +24,53 @@ var buttonArray = [button1El, button2El, button3El, button4El];
 
 
 var centralCounter;
+var timeLeft;
 
 //TEST: REMOVE WHEN FINSIHED \\
 var testButtonEl = document.getElementById("test-button")
 
 // make an array with each question and have it cycle through each object
 function setTime() {
-    var timeLeft = 75;
+    timeLeft = 75;
     var countDown =  setInterval(function() {
         timeLeft--;
         counterEl.textContent = timeLeft;
         if (timeLeft === 0) {
             clearInterval(countDown);
+        } else if (centralCounter === 5) {
+            clearInterval(countDown);
+            console.log(timeLeft);
         }
-    }, 100)
+    }, 1000)
 }
 
 function displayQuestion() {
     if (centralCounter === 0) {
         questionEl.textContent = questionText[0];
-        for (var i  = 0; i < 4; i++)  {
+        for (var i  = 0; i < buttonArray.length; i++)  {
             buttonArray[i].textContent = q1AnsText[i];
-        };
+            buttonArray[i].classList.toggle("hide");
+        }
     } else if (centralCounter === 1) {
         questionEl.textContent = questionText[1];
-        for (var i  = 0; i < 4; i++)  {
+        for (var i  = 0; i < buttonArray.length; i++)  {
             buttonArray[i].textContent = q2AnsText[i];
-        };
+        }
     } else if (centralCounter === 2) {
         questionEl.textContent = questionText[2];
-        for (var i  = 0; i < 4; i++)  {
+        for (var i  = 0; i < buttonArray.length; i++)  {
             buttonArray[i].textContent = q3AnsText[i];
-        };
+        }
     } else if (centralCounter === 3) {
         questionEl.textContent = questionText[3];
-        for (var i  = 0; i < 4; i++)  {
+        for (var i  = 0; i < buttonArray.length; i++)  {
             buttonArray[i].textContent = q4AnsText[i];
-        };
+        }
     } else if (centralCounter === 4) {
         questionEl.textContent = questionText[4];
-        for (var i  = 0; i < 4; i++)  {
+        for (var i  = 0; i < buttonArray.length; i++)  {
             buttonArray[i].textContent = q5AnsText[i];
-        };
+        }
     } else if (centralCounter === 5) {
         questionEl.textContent = questionText[5];
     }
