@@ -11,7 +11,7 @@ var questionText = ["Commonly used data types DO NOT include:",
 "A very useful tool used during development and debugging for printing content to the debugger is:", 
 "All done!"];
 
-var centralCounter= -1;
+var centralCounter;
 
 //TEST: REMOVE WHEN FINSIHED \\
 var testButtonEl = document.getElementById("test-button")
@@ -28,11 +28,21 @@ function setTime() {
     }, 100)
 }
 
-// function displayQuestion() {
-//     for (var i = -1; i < centralCounter; i++) {
-//         questionEl.textContent = questionText[i];
-//     }
-// };
+function displayQuestion() {
+    if (centralCounter === 0) {
+        questionEl.textContent = questionText[0];
+    } else if (centralCounter === 1) {
+        questionEl.textContent = questionText[1];
+    } else if (centralCounter === 2) {
+        questionEl.textContent = questionText[2];
+    } else if (centralCounter === 3) {
+        questionEl.textContent = questionText[3];
+    } else if (centralCounter === 4) {
+        questionEl.textContent = questionText[4];
+    } else if (centralCounter === 5) {
+        questionEl.textContent = questionText[5];
+    }
+};
 
 stButtonEl.addEventListener("click", function(event) {
     event.preventDefault();
@@ -41,15 +51,17 @@ stButtonEl.addEventListener("click", function(event) {
     setTime();
     centralCounter = -1;
     centralCounter++;
-    questionEl.textContent = questionText[0];
+    displayQuestion();
+    // questionEl.textContent = questionText[0];
 });
 
 // TEST: REMOVE WHEN FINISHED \\
 testButtonEl.addEventListener("click", function(event) {
     event.preventDefault();
     centralCounter++;
-    if (centralCounter == 6) {
+    if (centralCounter === 6) {
         centralCounter = 0
     }
     console.log(centralCounter);
+    displayQuestion();
 });
