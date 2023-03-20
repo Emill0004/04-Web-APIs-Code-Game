@@ -1,6 +1,7 @@
 var stButtonEl = document.getElementById("start-button");
 var startPageEl = document.getElementById("startpg");
 var counterEl =  document.getElementById("counter");
+var contentPageEl =  document.getElementById("contentpg");
 
 var h1El = ["Coding Quiz challenge", "Highscores"];
 
@@ -24,5 +25,6 @@ function setTime() {
 stButtonEl.addEventListener("click", function(event) {
     event.preventDefault();
     startPageEl.classList.toggle("hide");
+    contentPageEl.classList.toggle("hide");
     setTime();
 });

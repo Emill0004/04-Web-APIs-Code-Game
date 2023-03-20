@@ -46,6 +46,15 @@ button:hover {
     background-color: mediumpurple;
 }
 
+#contentpg {
+    margin-left: 30%;
+}
+
+#contentpg button {
+    display: block;
+    margin: 5px;
+}
+
 .hide {
     display: none;
 }
