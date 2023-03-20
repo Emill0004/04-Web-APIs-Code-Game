@@ -42,7 +42,7 @@ function renderScores() {
         var highscore = highscores[i];
 
         var li = document.createElement("li");
-        li.textContent = highscore;
+        li.textContent = highscore + " - " + timeLeft;
         hiScoreListEl.appendChild(li);
     }
 }
