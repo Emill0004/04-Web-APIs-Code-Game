@@ -28,7 +28,6 @@ var timeLeft;
 //TEST: REMOVE WHEN FINSIHED \\
 var testButtonEl = document.getElementById("test-button")
 
-// make an array with each question and have it cycle through each object
 function setTime() {
     timeLeft = 75;
     var countDown =  setInterval(function() {
@@ -92,7 +91,6 @@ stButtonEl.addEventListener("click", function(event) {
     centralCount = -1;
     centralCount++;
     displayQuestion();
-    // questionEl.textContent = questionText[0];
 });
 
 // TEST: REMOVE WHEN FINISHED \\
