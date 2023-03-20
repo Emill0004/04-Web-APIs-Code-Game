@@ -10,6 +10,8 @@ var button3El = document.getElementById("ans-button-3");
 var button4El = document.getElementById("ans-button-4");
 var rightEl = document.getElementById("right");
 var wrongEl = document.getElementById("wrong");
+var initialsInputEl = document.getElementById("initials-text")
+var initialsButtonEl = document.getElementById("initials-button")
 
 var questionText = ["Commonly used data types DO NOT include:", 
 "The condition in an if / else statement is enclosed within _____.", 
@@ -35,9 +37,6 @@ function wrongTime() {
     wrongEl.classList.toggle("hide");
     setTimeout(() => {wrongEl.classList.toggle("hide")}, 1000);
 };
-
-//TEST: REMOVE WHEN FINSIHED \\
-var testButtonEl = document.getElementById("test-button")
 
 function setTime() {
     var countDown = setInterval(function() {
@@ -83,7 +82,7 @@ function displayQuestion() {
         }
     } else if (centralCount === 5) {
         questionEl.textContent = questionText[5];
-        scoreEl.textContent = "Your final score is " + timeLeft;
+        scoreEl.textContent = "Your final score is " + (timeLeft - 1);
         ansButtonsEl.classList.toggle("hide");
         scoreEl.classList.toggle("hide");
     }
@@ -188,15 +187,7 @@ button4El.addEventListener("click", function(event) {
     displayQuestion();
 });
 
-
-
-// TEST: REMOVE WHEN FINISHED \\
-testButtonEl.addEventListener("click", function(event) {
+initialsButtonEl.addEventListener("click", function(event) {
     event.preventDefault();
-    centralCount++;
-    if (centralCount === 6) {
-        centralCount = 0
-    }
-    console.log(centralCount);
-    displayQuestion();
-});
+    console.log(initialsInputEl.value);
+})
