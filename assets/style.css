@@ -46,11 +46,11 @@ button:hover {
     background-color: mediumpurple;
 }
 
-#contentpg {
+.contentpg {
     margin-left: 30%;
 }
 
-#contentpg button {
+#ans-buttons button {
     display: block;
     margin: 5px;
 }
@@ -59,6 +59,3 @@ button:hover {
     display: none;
 }
 
-#ans-button-4 {
-    display: none;
-}
