@@ -2,6 +2,7 @@ var stButtonEl = document.getElementById("start-button");
 var startPageEl = document.getElementById("startpg");
 var counterEl =  document.getElementById("counter");
 var contentPageEl =  document.getElementById("contentpg");
+var questionEl = document.getElementById("question");
 
 var questionText = ["Commonly used data types DO NOT include:", 
 "The condition in an if / else statement is enclosed within _____.", 
@@ -10,7 +11,10 @@ var questionText = ["Commonly used data types DO NOT include:",
 "A very useful tool used during development and debugging for printing content to the debugger is:", 
 "All done!"];
 
-var centralCounter;
+var centralCounter= -1;
+
+//TEST: REMOVE WHEN FINSIHED \\
+var testButtonEl = document.getElementById("test-button")
 
 // make an array with each question and have it cycle through each object
 function setTime() {
@@ -24,6 +28,12 @@ function setTime() {
     }, 100)
 }
 
+// function displayQuestion() {
+//     for (var i = -1; i < centralCounter; i++) {
+//         questionEl.textContent = questionText[i];
+//     }
+// };
+
 stButtonEl.addEventListener("click", function(event) {
     event.preventDefault();
     startPageEl.classList.toggle("hide");
@@ -31,4 +41,15 @@ stButtonEl.addEventListener("click", function(event) {
     setTime();
     centralCounter = -1;
     centralCounter++;
+    questionEl.textContent = questionText[0];
+});
+
+// TEST: REMOVE WHEN FINISHED \\
+testButtonEl.addEventListener("click", function(event) {
+    event.preventDefault();
+    centralCounter++;
+    if (centralCounter == 6) {
+        centralCounter = 0
+    }
+    console.log(centralCounter);
 });
