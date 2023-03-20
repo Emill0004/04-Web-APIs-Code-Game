@@ -8,6 +8,8 @@ var button1El = document.getElementById("ans-button-1");
 var button2El = document.getElementById("ans-button-2");
 var button3El = document.getElementById("ans-button-3");
 var button4El = document.getElementById("ans-button-4");
+var rightEl = document.getElementById("right");
+var wrongEl = document.getElementById("wrong");
 
 var questionText = ["Commonly used data types DO NOT include:", 
 "The condition in an if / else statement is enclosed within _____.", 
@@ -25,16 +27,26 @@ var buttonArray = [button1El, button2El, button3El, button4El];
 var centralCount;
 var timeLeft;
 
+function rightTime() {
+    rightEl.classList.toggle("hide");
+    setTimeout(() => {rightEl.classList.toggle("hide")}, 1000);
+};
+function wrongTime() {
+    wrongEl.classList.toggle("hide");
+    setTimeout(() => {wrongEl.classList.toggle("hide")}, 1000);
+};
+
 //TEST: REMOVE WHEN FINSIHED \\
 var testButtonEl = document.getElementById("test-button")
 
 function setTime() {
-    timeLeft = 75;
-    var countDown =  setInterval(function() {
+    var countDown = setInterval(function() {
         timeLeft--;
         counterEl.textContent = timeLeft;
         if (timeLeft === 0) {
             clearInterval(countDown);
+            centralCount = 5;
+            displayQuestion();
         } else if (centralCount === 5) {
             clearInterval(countDown);
             console.log(timeLeft);
@@ -45,28 +57,28 @@ function setTime() {
 function displayQuestion() {
     if (centralCount === 0) {
         questionEl.textContent = questionText[0];
-        for (var i  = 0; i < buttonArray.length; i++)  {
+        for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q1AnsText[i];
             buttonArray[i].classList.toggle("hide");
         }
     } else if (centralCount === 1) {
         questionEl.textContent = questionText[1];
-        for (var i  = 0; i < buttonArray.length; i++)  {
+        for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q2AnsText[i];
         }
     } else if (centralCount === 2) {
         questionEl.textContent = questionText[2];
-        for (var i  = 0; i < buttonArray.length; i++)  {
+        for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q3AnsText[i];
         }
     } else if (centralCount === 3) {
         questionEl.textContent = questionText[3];
-        for (var i  = 0; i < buttonArray.length; i++)  {
+        for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q4AnsText[i];
         }
     } else if (centralCount === 4) {
         questionEl.textContent = questionText[4];
-        for (var i  = 0; i < buttonArray.length; i++)  {
+        for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q5AnsText[i];
         }
     } else if (centralCount === 5) {
@@ -80,6 +92,8 @@ function displayQuestion() {
 scoreEl.classList.toggle("hide");
 questionEl.classList.toggle("hide");
 ansButtonsEl.classList.toggle("hide");
+rightEl.classList.toggle("hide");
+wrongEl.classList.toggle("hide");
 
 
 stButtonEl.addEventListener("click", function(event) {
@@ -87,11 +101,94 @@ stButtonEl.addEventListener("click", function(event) {
     startPageEl.classList.toggle("hide");
     questionEl.classList.toggle("hide");
     ansButtonsEl.classList.toggle("hide");
+    timeLeft = 75;
     setTime();
     centralCount = -1;
     centralCount++;
     displayQuestion();
 });
+
+button1El.addEventListener("click", function(event) {
+    event.preventDefault();
+    if (centralCount === 0) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 1) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 2) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 3) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 4) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    }
+    centralCount++;
+    displayQuestion();
+});
+button2El.addEventListener("click", function(event) {
+    event.preventDefault();
+    if (centralCount === 0) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 1) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 2) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 3) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 4) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    }
+    centralCount++;
+    displayQuestion();
+});
+button3El.addEventListener("click", function(event) {
+    if (centralCount === 0) {
+        rightTime();
+    } else if (centralCount === 1) {
+        rightTime();
+    } else if (centralCount === 2) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 3) {
+        rightTime();
+    } else if (centralCount === 4) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    }
+    event.preventDefault();
+    centralCount++;
+    displayQuestion();
+});
+button4El.addEventListener("click", function(event) {
+    event.preventDefault();
+    if (centralCount === 0) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 1) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 2) {
+        rightTime();
+    } else if (centralCount === 3) {
+        timeLeft = timeLeft - 10;
+        wrongTime();
+    } else if (centralCount === 4) {
+        rightTime();
+    }
+    centralCount++;
+    displayQuestion();
+});
+
+
 
 // TEST: REMOVE WHEN FINISHED \\
 testButtonEl.addEventListener("click", function(event) {

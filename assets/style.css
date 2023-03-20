@@ -24,6 +24,10 @@ p {
     display: inline-block;
 }
 
+#hiscore-link:hover {
+    text-decoration: underline;
+}
+
 #timer {
     float: right;
 }
@@ -59,3 +63,11 @@ button:hover {
     display: none;
 }
 
+#right, #wrong {
+    margin-left: 30%;
+    margin-right: 30%;
+    color: darkgrey;
+    font-style: italic;
+    border-top: 2px;
+    border-style: solid none none none;
+}
