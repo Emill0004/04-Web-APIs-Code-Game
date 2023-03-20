@@ -1,9 +1,12 @@
 :root {
-    --purple: rebeccapurple;
+    --purple: white; /*SWAP BACK TO REBECCA PURPLE BFORE SUBMITTING*/
 }
 
 * {
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
+    /*REMOVE FOLLOWING TWO LINES BEFORE SUBMITTING*/
+    background-color: #404040;
+    color: white;
 }
 
 h1 {
@@ -25,14 +28,14 @@ p {
     float: right;
 }
 
-.startpg {
+#startpg {
     text-align: center;
 }
 
 button  {
     font-size: 17px;
     background-color: var(--purple);
-    color: white;
+    color: #404040; /*SWAP BACK TO WHITE BEFORE SUBMITTING*/
     border: none;
     border-radius: 5px;
     padding: 3px 7px;
