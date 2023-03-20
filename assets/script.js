@@ -43,14 +43,29 @@ function setTime() {
 function displayQuestion() {
     if (centralCounter === 0) {
         questionEl.textContent = questionText[0];
+        for (var i  = 0; i < 4; i++)  {
+            buttonArray[i].textContent = q1AnsText[i];
+        };
     } else if (centralCounter === 1) {
         questionEl.textContent = questionText[1];
+        for (var i  = 0; i < 4; i++)  {
+            buttonArray[i].textContent = q2AnsText[i];
+        };
     } else if (centralCounter === 2) {
         questionEl.textContent = questionText[2];
+        for (var i  = 0; i < 4; i++)  {
+            buttonArray[i].textContent = q3AnsText[i];
+        };
     } else if (centralCounter === 3) {
         questionEl.textContent = questionText[3];
+        for (var i  = 0; i < 4; i++)  {
+            buttonArray[i].textContent = q4AnsText[i];
+        };
     } else if (centralCounter === 4) {
         questionEl.textContent = questionText[4];
+        for (var i  = 0; i < 4; i++)  {
+            buttonArray[i].textContent = q5AnsText[i];
+        };
     } else if (centralCounter === 5) {
         questionEl.textContent = questionText[5];
     }
