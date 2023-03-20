@@ -18,7 +18,7 @@
     </div>
     <h2 class="contentpg" id="question"></h2>
     <p class="contentpg" id="score"></p>
-    <div class="contentpg">
+    <div class="contentpg" id="initials-div">
       <p>Enter initials:</p>
       <input type="text" id="initials-text">
       <button id="initials-button">Submit</button>
@@ -31,17 +31,24 @@
     </div>
     <p id="wrong">Wrong!</p>
     <p id="right">Correct!</p>
+    <div class="contentpg" id="highscores-div">
+      <h1>Highscores</h1>
+      <ol id="scorelist">
+      </ol>
+      <button id="return-button">Go Back</button>
+      <button id="clear-button">Clear Highscores</button>
+    </div>
 
     <script type="text/javascript" src="./assets/script.js"></script>
 </body>
 
 <!-- 
 To do list:
-  1. add a text box that users can type their initials in 
-  2. store the initials and score in a variable in the local storage
+  1. DONE add a text box that users can type their initials in 
+  2. DONE store the initials and score in a variable in the local storage
   3. add a highscores page with a list of ordered highscores from the local storage
   4. make the veiw highscores button also pull up the highscores page
-  5. add a button to clear the saved highscores
+  5. DONE add a button to clear the saved highscores
   6. add descriptive coments
   7. add a README.md file
 -->

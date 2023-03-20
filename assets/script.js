@@ -12,6 +12,11 @@ var rightEl = document.getElementById("right");
 var wrongEl = document.getElementById("wrong");
 var initialsInputEl = document.getElementById("initials-text")
 var initialsButtonEl = document.getElementById("initials-button")
+var hiScoreListEl = document.getElementById("scorelist")
+var clearButtonEl = document.getElementById("clear-button");
+var returnButtonEl = document.getElementById("return-button");
+var initialsDiv = document.getElementById("initials-div");
+var highscoresDiv = document.getElementById("highscores-div");
 
 var questionText = ["Commonly used data types DO NOT include:", 
 "The condition in an if / else statement is enclosed within _____.", 
@@ -26,14 +31,58 @@ var q4AnsText = ["1. commas", "2. curly brackets", "3. quotes", "4. parentheses"
 var q5AnsText = ["1. Javascript", "2. terminal / bash", "3. for loops", "4. console.log"];
 var buttonArray = [button1El, button2El, button3El, button4El];
 
+var highscores = [];
+
 var centralCount;
 var timeLeft;
 
-function rightTime() {
+function renderScores() {
+    hiScoreListEl.innerHTML = "";
+    for (var i = 0; i < highscores.length; i++) {
+        var highscore = highscores[i];
+
+        var li = document.createElement("li");
+        li.textContent = highscore;
+        hiScoreListEl.appendChild(li);
+    }
+}
+
+function init() {
+    var storedScores = JSON.parse(localStorage.getItem("highscores"));
+    if (storedScores !== null) {
+        highscores = storedScores;
+    }
+    renderScores();
+}
+
+function storeScores() {
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+}
+
+initialsButtonEl.addEventListener("click", function(event) {
+    event.preventDefault();
+    console.log(highscores);
+    var initialsText = initialsInputEl.value.trim();
+    initialsText = initialsText.toUpperCase();
+    if (initialsText === "") {
+        return;
+    }
+    highscores.push(initialsText);
+    initialsInputEl.value = "";
+
+    storeScores();
+    renderScores();
+    centralCount++;
+    displayNext();
+});
+
+init();
+
+function rightMsg() {
     rightEl.classList.toggle("hide");
     setTimeout(() => {rightEl.classList.toggle("hide")}, 1000);
 };
-function wrongTime() {
+function wrongMsg() {
     wrongEl.classList.toggle("hide");
     setTimeout(() => {wrongEl.classList.toggle("hide")}, 1000);
 };
@@ -45,46 +94,55 @@ function setTime() {
         if (timeLeft === 0) {
             clearInterval(countDown);
             centralCount = 5;
-            displayQuestion();
-        } else if (centralCount === 5) {
+            displayNext();
+        } else if (centralCount === 6) {
             clearInterval(countDown);
             console.log(timeLeft);
         }
     }, 1000)
 }
 
-function displayQuestion() {
+function displayNext() {
     if (centralCount === 0) {
+        startPageEl.classList.toggle("hide");
+        highscoresDiv.classList.toggle("hide");
+    } else if (centralCount === 1) {
         questionEl.textContent = questionText[0];
         for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q1AnsText[i];
             buttonArray[i].classList.toggle("hide");
         }
-    } else if (centralCount === 1) {
+    } else if (centralCount === 2) {
         questionEl.textContent = questionText[1];
         for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q2AnsText[i];
         }
-    } else if (centralCount === 2) {
+    } else if (centralCount === 3) {
         questionEl.textContent = questionText[2];
         for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q3AnsText[i];
         }
-    } else if (centralCount === 3) {
+    } else if (centralCount === 4) {
         questionEl.textContent = questionText[3];
         for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q4AnsText[i];
         }
-    } else if (centralCount === 4) {
+    } else if (centralCount === 5) {
         questionEl.textContent = questionText[4];
         for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q5AnsText[i];
         }
-    } else if (centralCount === 5) {
+    } else if (centralCount === 6) {
         questionEl.textContent = questionText[5];
         scoreEl.textContent = "Your final score is " + (timeLeft - 1);
         ansButtonsEl.classList.toggle("hide");
         scoreEl.classList.toggle("hide");
+        initialsDiv.classList.toggle("hide");
+    } else if (centralCount === 7) {
+        scoreEl.classList.toggle("hide");
+        initialsDiv.classList.toggle("hide");
+        highscoresDiv.classList.toggle("hide");
+        questionEl.classList.toggle("hide");
     }
 };
 
@@ -93,6 +151,9 @@ questionEl.classList.toggle("hide");
 ansButtonsEl.classList.toggle("hide");
 rightEl.classList.toggle("hide");
 wrongEl.classList.toggle("hide");
+initialsDiv.classList.toggle("hide");
+highscoresDiv.classList.toggle("hide");
+
 
 
 stButtonEl.addEventListener("click", function(event) {
@@ -102,92 +163,99 @@ stButtonEl.addEventListener("click", function(event) {
     ansButtonsEl.classList.toggle("hide");
     timeLeft = 75;
     setTime();
-    centralCount = -1;
+    centralCount = 0;
     centralCount++;
-    displayQuestion();
+    displayNext();
 });
 
 button1El.addEventListener("click", function(event) {
     event.preventDefault();
     if (centralCount === 0) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 1) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 2) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 3) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 4) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     }
     centralCount++;
-    displayQuestion();
+    displayNext();
 });
 button2El.addEventListener("click", function(event) {
     event.preventDefault();
     if (centralCount === 0) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 1) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 2) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 3) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 4) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     }
     centralCount++;
-    displayQuestion();
+    displayNext();
 });
 button3El.addEventListener("click", function(event) {
     if (centralCount === 0) {
-        rightTime();
+        rightMsg();
     } else if (centralCount === 1) {
-        rightTime();
+        rightMsg();
     } else if (centralCount === 2) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 3) {
-        rightTime();
+        rightMsg();
     } else if (centralCount === 4) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     }
     event.preventDefault();
     centralCount++;
-    displayQuestion();
+    displayNext();
 });
 button4El.addEventListener("click", function(event) {
     event.preventDefault();
     if (centralCount === 0) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 1) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 2) {
-        rightTime();
+        rightMsg();
     } else if (centralCount === 3) {
         timeLeft = timeLeft - 10;
-        wrongTime();
+        wrongMsg();
     } else if (centralCount === 4) {
-        rightTime();
+        rightMsg();
     }
     centralCount++;
-    displayQuestion();
+    displayNext();
 });
 
-initialsButtonEl.addEventListener("click", function(event) {
-    event.preventDefault();
-    console.log(initialsInputEl.value);
+clearButtonEl.addEventListener("click", function(event) {
+    highscores = [];
+    localStorage.clear();
+    storeScores();
+    renderScores();
+});
+
+returnButtonEl.addEventListener("click", function(event) {
+    centralCount = 0;
+    displayNext();
 })
