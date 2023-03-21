@@ -1,5 +1,5 @@
 var stButtonEl = document.getElementById("start-button");
-var startPageEl = document.getElementById("startpg");
+var centeredDiv = document.getElementById("centered");
 var counterEl = document.getElementById("counter");
 var scoreEl = document.getElementById("score");
 var questionEl = document.getElementById("question");
@@ -17,6 +17,7 @@ var clearButtonEl = document.getElementById("clear-button");
 var returnButtonEl = document.getElementById("return-button");
 var initialsDiv = document.getElementById("initials-div");
 var highscoresDiv = document.getElementById("highscores-div");
+var highscoreLink = document.getElementById("hiscore-link");
 
 var questionText = ["Commonly used data types DO NOT include:", 
 "The condition in an if / else statement is enclosed within _____.", 
@@ -42,7 +43,8 @@ function renderScores() {
         var highscore = highscores[i];
 
         var li = document.createElement("li");
-        li.textContent = highscore + " - " + timeLeft;
+        var scoreText = timeLeft;
+        li.textContent = highscore + " - " + scoreText;
         hiScoreListEl.appendChild(li);
     }
 }
@@ -79,12 +81,12 @@ initialsButtonEl.addEventListener("click", function(event) {
 init();
 
 function rightMsg() {
-    rightEl.classList.toggle("hide");
-    setTimeout(() => {rightEl.classList.toggle("hide")}, 1000);
+    rightEl.classList.toggle("hidden");
+    setTimeout(() => {rightEl.classList.toggle("hidden")}, 1000);
 };
 function wrongMsg() {
-    wrongEl.classList.toggle("hide");
-    setTimeout(() => {wrongEl.classList.toggle("hide")}, 1000);
+    wrongEl.classList.toggle("hidden");
+    setTimeout(() => {wrongEl.classList.toggle("hidden")}, 1000);
 };
 
 function setTime() {
@@ -93,7 +95,7 @@ function setTime() {
         counterEl.textContent = timeLeft;
         if (timeLeft === 0) {
             clearInterval(countDown);
-            centralCount = 5;
+            centralCount = 6;
             displayNext();
         } else if (centralCount === 6) {
             clearInterval(countDown);
@@ -104,13 +106,13 @@ function setTime() {
 
 function displayNext() {
     if (centralCount === 0) {
-        startPageEl.classList.toggle("hide");
-        highscoresDiv.classList.toggle("hide");
+        centeredDiv.classList.toggle("hidden");
+        highscoresDiv.classList.toggle("hidden");
     } else if (centralCount === 1) {
         questionEl.textContent = questionText[0];
         for (var i = 0; i < buttonArray.length; i++) {
             buttonArray[i].textContent = q1AnsText[i];
-            buttonArray[i].classList.toggle("hide");
+            buttonArray[i].classList.toggle("hidden");
         }
     } else if (centralCount === 2) {
         questionEl.textContent = questionText[1];
@@ -134,33 +136,38 @@ function displayNext() {
         }
     } else if (centralCount === 6) {
         questionEl.textContent = questionText[5];
-        scoreEl.textContent = "Your final score is " + (timeLeft - 1);
-        ansButtonsEl.classList.toggle("hide");
-        scoreEl.classList.toggle("hide");
-        initialsDiv.classList.toggle("hide");
+        if (timeLeft !== 0) {
+            scoreEl.textContent = "Your final score is " + (timeLeft - 1);
+        } else {
+            scoreEl.textContent = "Your final score is " + timeLeft;
+        }
+        
+        ansButtonsEl.classList.toggle("hidden");
+        scoreEl.classList.toggle("hidden");
+        initialsDiv.classList.toggle("hidden");
     } else if (centralCount === 7) {
-        scoreEl.classList.toggle("hide");
-        initialsDiv.classList.toggle("hide");
-        highscoresDiv.classList.toggle("hide");
-        questionEl.classList.toggle("hide");
+        scoreEl.classList.toggle("hidden");
+        initialsDiv.classList.toggle("hidden");
+        highscoresDiv.classList.toggle("hidden");
+        questionEl.classList.toggle("hidden");
     }
 };
 
-scoreEl.classList.toggle("hide");
-questionEl.classList.toggle("hide");
-ansButtonsEl.classList.toggle("hide");
-rightEl.classList.toggle("hide");
-wrongEl.classList.toggle("hide");
-initialsDiv.classList.toggle("hide");
-highscoresDiv.classList.toggle("hide");
+scoreEl.classList.toggle("hidden");
+questionEl.classList.toggle("hidden");
+ansButtonsEl.classList.toggle("hidden");
+rightEl.classList.toggle("hidden");
+wrongEl.classList.toggle("hidden");
+// initialsDiv.classList.toggle("hidden");
+// highscoresDiv.classList.toggle("hidden");
 
 
 
 stButtonEl.addEventListener("click", function(event) {
     event.preventDefault();
-    startPageEl.classList.toggle("hide");
-    questionEl.classList.toggle("hide");
-    ansButtonsEl.classList.toggle("hide");
+    centeredDiv.classList.toggle("hidden");
+    questionEl.classList.toggle("hidden");
+    ansButtonsEl.classList.toggle("hidden");
     timeLeft = 75;
     setTime();
     centralCount = 0;
@@ -170,10 +177,7 @@ stButtonEl.addEventListener("click", function(event) {
 
 button1El.addEventListener("click", function(event) {
     event.preventDefault();
-    if (centralCount === 0) {
-        timeLeft = timeLeft - 10;
-        wrongMsg();
-    } else if (centralCount === 1) {
+    if (centralCount === 1) {
         timeLeft = timeLeft - 10;
         wrongMsg();
     } else if (centralCount === 2) {
@@ -183,6 +187,9 @@ button1El.addEventListener("click", function(event) {
         timeLeft = timeLeft - 10;
         wrongMsg();
     } else if (centralCount === 4) {
+        timeLeft = timeLeft - 10;
+        wrongMsg();
+    } else if (centralCount === 5) {
         timeLeft = timeLeft - 10;
         wrongMsg();
     }
@@ -191,10 +198,7 @@ button1El.addEventListener("click", function(event) {
 });
 button2El.addEventListener("click", function(event) {
     event.preventDefault();
-    if (centralCount === 0) {
-        timeLeft = timeLeft - 10;
-        wrongMsg();
-    } else if (centralCount === 1) {
+    if (centralCount === 1) {
         timeLeft = timeLeft - 10;
         wrongMsg();
     } else if (centralCount === 2) {
@@ -204,6 +208,9 @@ button2El.addEventListener("click", function(event) {
         timeLeft = timeLeft - 10;
         wrongMsg();
     } else if (centralCount === 4) {
+        timeLeft = timeLeft - 10;
+        wrongMsg();
+    } else if (centralCount === 5) {
         timeLeft = timeLeft - 10;
         wrongMsg();
     }
@@ -211,16 +218,16 @@ button2El.addEventListener("click", function(event) {
     displayNext();
 });
 button3El.addEventListener("click", function(event) {
-    if (centralCount === 0) {
-        rightMsg();
-    } else if (centralCount === 1) {
+    if (centralCount === 1) {
         rightMsg();
     } else if (centralCount === 2) {
+        rightMsg();
+    } else if (centralCount === 3) {
         timeLeft = timeLeft - 10;
         wrongMsg();
-    } else if (centralCount === 3) {
-        rightMsg();
     } else if (centralCount === 4) {
+        rightMsg();
+    } else if (centralCount === 5) {
         timeLeft = timeLeft - 10;
         wrongMsg();
     }
@@ -230,18 +237,18 @@ button3El.addEventListener("click", function(event) {
 });
 button4El.addEventListener("click", function(event) {
     event.preventDefault();
-    if (centralCount === 0) {
-        timeLeft = timeLeft - 10;
-        wrongMsg();
-    } else if (centralCount === 1) {
+    if (centralCount === 1) {
         timeLeft = timeLeft - 10;
         wrongMsg();
     } else if (centralCount === 2) {
-        rightMsg();
-    } else if (centralCount === 3) {
         timeLeft = timeLeft - 10;
         wrongMsg();
+    } else if (centralCount === 3) {
+        rightMsg();
     } else if (centralCount === 4) {
+        timeLeft = timeLeft - 10;
+        wrongMsg();
+    } else if (centralCount === 5) {
         rightMsg();
     }
     centralCount++;
@@ -258,4 +265,12 @@ clearButtonEl.addEventListener("click", function(event) {
 returnButtonEl.addEventListener("click", function(event) {
     centralCount = 0;
     displayNext();
+})
+
+highscoreLink.addEventListener("click", function(event) {
+    if (centralCount === 7) {
+        return;
+    } else {
+        highscoresDiv.classList.toggle("hidden");
+    }
 })

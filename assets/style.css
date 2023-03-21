@@ -1,12 +1,12 @@
-:root {
-    --purple: white; /*SWAP BACK TO REBECCA PURPLE BFORE SUBMITTING*/
-}
-
 * {
     font-family: Arial, Helvetica, sans-serif;
-    /*REMOVE FOLLOWING TWO LINES BEFORE SUBMITTING*/
     background-color: #404040;
     color: white;
+}
+
+main {
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 h1 {
@@ -20,28 +20,27 @@ p {
 
 
 #hiscore-link {
-    color: var(--purple);
+    color: white;
     display: inline-block;
 }
 
 #hiscore-link:hover {
     text-decoration: underline;
+    color: lightgray;
 }
 
 #timer {
     float: right;
 }
 
-#startpg {
+#centered {
     text-align: center;
-    margin-right: 30%;
-    margin-left: 30%;
 }
 
 button  {
     font-size: 17px;
-    background-color: var(--purple);
-    color: #404040; /*SWAP BACK TO WHITE BEFORE SUBMITTING*/
+    background-color: white;
+    color: #404040; 
     border: none;
     border-radius: 5px;
     padding: 3px 7px;
@@ -49,15 +48,7 @@ button  {
 }
 
 button:hover {
-    background-color: mediumpurple;
-}
-
-.contentpg {
-    margin-left: 30%;
-}
-
-#question {
-    margin-left: 30%;
+    background-color: lightgray;
 }
 
 #ans-buttons button {
@@ -65,13 +56,11 @@ button:hover {
     margin: 5px;
 }
 
-.hide {
+.hidden {
     display: none;
 }
 
 #right, #wrong {
-    margin-left: 30%;
-    margin-right: 30%;
     color: darkgrey;
     font-style: italic;
     border-top: 2px;

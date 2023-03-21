@@ -8,22 +8,23 @@
 </head>
 
 <body>
-    <h3 id="hiscore-link">View Highscores</h3>
+  <h3 id="hiscore-link">View Highscores</h3>
     <h3 id="timer">Time: <span id="counter">0</span></h3>
-    <div id="startpg">
+  <main>
+    <div id="centered">
       <h1 id="title">Coding Quiz Challenge</h1>
     <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers wil penalize your 
       score/time by ten seconds!</p>
     <button id="start-button">Start Quiz</button>
     </div>
-    <h2 class="contentpg" id="question"></h2>
-    <p class="contentpg" id="score"></p>
-    <div class="contentpg" id="initials-div">
+    <h2 id="question"></h2>
+    <p id="score"></p>
+    <div class="hidden" id="initials-div">
       <p>Enter initials:</p>
       <input type="text" id="initials-text">
       <button id="initials-button">Submit</button>
     </div>
-    <div class="contentpg" id="ans-buttons">
+    <div id="ans-buttons">
       <button id="ans-button-1"></button>
       <button id="ans-button-2"></button>
       <button id="ans-button-3"></button>
@@ -31,14 +32,14 @@
     </div>
     <p id="wrong">Wrong!</p>
     <p id="right">Correct!</p>
-    <div class="contentpg" id="highscores-div">
+    <div class="hidden" id="highscores-div">
       <h1>Highscores</h1>
       <ol id="scorelist">
       </ol>
       <button id="return-button">Go Back</button>
       <button id="clear-button">Clear Highscores</button>
     </div>
-
+  </main>
     <script type="text/javascript" src="./assets/script.js"></script>
 </body>
 
@@ -51,4 +52,3 @@ To do list:
   5. DONE add a button to clear the saved highscores
   6. add descriptive coments
   7. add a README.md file
--->
